@@ -21,7 +21,7 @@ Instead of relying on a single method, I implemented a **Parallel Processing Pip
 
 3.  **Track 3: Smart Silence Detection (The Controller)**
     - Monitors Voice Activity (VAD).
-    - **Logic:** When **Silence > 1.5s** is detected, it triggers a **Context Check**. It does *not* drop the message blindly. It asks: *"Is the speaker actually done, or just breathing?"*
+    - **Logic:** When **Silence > 0.6s** is detected, it triggers a **Context Check**. It does *not* drop the message blindly. It asks: *"Is the speaker actually done, or just breathing?"*
 
 ---
 
@@ -43,7 +43,7 @@ graph TD
     %% Path 2: The Smart Silence (Logic Path)
     TextTrack -. "Continuous Context Update" .-> LogicNode
     
-    SilenceTrack -- "Silence > 1.5s Detected" --> Check{Check Logic}
+    SilenceTrack -- "Silence > 0.6s Detected" --> Check{Check Logic}
     
     Check --> LogicNode[Analyze Last Sentence using LLM]
     
